@@ -1,0 +1,393 @@
+{
+  "rule_weights": {
+    "new_device": 15,
+    "new_country": 20,
+    "high_amount": 25,
+    "velocity_attack": 30,
+    "velocity_attack_extreme": 50,
+    "velocity_suspicious": 15,
+    "impossible_travel": 40,
+    "night_transaction": 10,
+    "amount_anomaly_extreme": 35,
+    "new_device_night_high": 45,
+    "new_country_high_amount": 40,
+    "first_txn_high": 30,
+    "fraud_history": 50,
+    "rapid_burst": 25,
+    "high_risk_merchant_night": 20,
+    "country_mismatch": 35,
+    "card_testing_sequence": 85,
+    "merchant_category_hopping": 70,
+    "speed_of_light_violation": 98,
+    "suspicious_travel": 50,
+    "timezone_impossibility": 60,
+    "sanctioned_country_merchant": 90,
+    "payment_method_mismatch": 65,
+    "refund_before_purchase": 98,
+    "impossible_user_profile": 75,
+    "device_fingerprint_chaos": 80,
+    "email_country_mismatch": 40,
+    "repeat_fraud_offender": 85,
+    "micro_txn_velocity": 85,
+    "fraud_history_high": 65
+  },
+  "rule_conditions": {
+    "impossible_travel": {
+      "field": "travel_speed_kmh",
+      "op": ">",
+      "value": 900
+    },
+    "fraud_history_high": {
+      "op": "and",
+      "conditions": [
+        {
+          "field": "user_past_fraud_count",
+          "op": ">=",
+          "value": 2
+        },
+        {
+          "field": "amount",
+          "op": ">",
+          "value": 200
+        }
+      ]
+    },
+    "new_device_night_high": {
+      "op": "and",
+      "conditions": [
+        {
+          "field": "is_new_device",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "field": "is_night",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "field": "amount",
+          "op": ">",
+          "value": 500
+        }
+      ]
+    },
+    "new_country_high_amount": {
+      "op": "and",
+      "conditions": [
+        {
+          "field": "is_new_country",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "field": "amount",
+          "op": ">",
+          "value": 1000
+        }
+      ]
+    },
+    "velocity_attack_extreme": {
+      "field": "txns_last_10min",
+      "op": ">",
+      "value": 10
+    },
+    "velocity_attack": {
+      "field": "txns_last_10min",
+      "op": "between",
+      "value": [
+        5,
+        10
+      ]
+    },
+    "velocity_suspicious": {
+      "field": "txns_last_10min",
+      "op": "between",
+      "value": [
+        3,
+        4
+      ]
+    },
+    "rapid_burst": {
+      "field": "is_burst_txn",
+      "op": "==",
+      "value": 1
+    },
+    "amount_anomaly_extreme": {
+      "field": "amount_vs_user_avg",
+      "op": ">",
+      "value": 10
+    },
+    "high_amount": {
+      "field": "amount_vs_user_avg",
+      "op": ">",
+      "value": 5
+    },
+    "first_txn_high": {
+      "op": "and",
+      "conditions": [
+        {
+          "field": "user_total_txn_count",
+          "op": "==",
+          "value": 0
+        },
+        {
+          "field": "amount",
+          "op": ">",
+          "value": 1000
+        }
+      ]
+    },
+    "country_mismatch_risk": {
+      "op": "and",
+      "conditions": [
+        {
+          "field": "country_mismatch_count",
+          "op": ">=",
+          "value": 2
+        },
+        {
+          "field": "high_risk_country_count",
+          "op": ">=",
+          "value": 1
+        }
+      ]
+    },
+    "new_device": {
+      "field": "is_new_device",
+      "op": "==",
+      "value": 1
+    },
+    "new_country": {
+      "field": "is_new_country",
+      "op": "==",
+      "value": 1
+    },
+    "night_transaction": {
+      "field": "is_night",
+      "op": "==",
+      "value": 1
+    },
+    "risky_merchant_night": {
+      "op": "and",
+      "conditions": [
+        {
+          "field": "is_high_risk_category",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "field": "is_night",
+          "op": "==",
+          "value": 1
+        }
+      ]
+    },
+    "card_testing_sequence": {
+      "op": "and",
+      "conditions": [
+        {
+          "field": "micro_txn_count_5min",
+          "op": ">=",
+          "value": 2
+        },
+        {
+          "field": "amount",
+          "op": ">",
+          "value": 300
+        },
+        {
+          "field": "time_since_last_micro_txn_min",
+          "op": "<",
+          "value": 5
+        }
+      ]
+    },
+    "merchant_category_hopping": {
+      "field": "distinct_high_risk_categories_1hr",
+      "op": ">=",
+      "value": 3
+    },
+    "speed_of_light_violation": {
+      "field": "travel_speed_kmh",
+      "op": ">",
+      "value": 1500
+    },
+    "suspicious_travel": {
+      "field": "travel_speed_kmh",
+      "op": "between",
+      "value": [
+        500,
+        900
+      ]
+    },
+    "timezone_impossibility": {
+      "op": "and",
+      "conditions": [
+        {
+          "field": "is_night",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "field": "is_new_country",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "field": "local_hour",
+          "op": "between",
+          "value": [
+            2,
+            5
+          ]
+        }
+      ]
+    },
+    "sanctioned_country_merchant": {
+      "op": "and",
+      "conditions": [
+        {
+          "field": "user_country",
+          "op": "in",
+          "value": [
+            "US",
+            "UK",
+            "GB",
+            "DE",
+            "FR"
+          ]
+        },
+        {
+          "field": "merchant_country",
+          "op": "in",
+          "value": [
+            "KP",
+            "IR",
+            "SY",
+            "CU",
+            "VE",
+            "RU",
+            "BY"
+          ]
+        }
+      ]
+    },
+    "payment_method_mismatch": {
+      "op": "and",
+      "conditions": [
+        {
+          "field": "merchant_category",
+          "op": "in",
+          "value": [
+            "crypto",
+            "cryptocurrency",
+            "digital_wallet"
+          ]
+        },
+        {
+          "field": "payment_method",
+          "op": "in",
+          "value": [
+            "credit_card",
+            "debit_card",
+            "card"
+          ]
+        }
+      ]
+    },
+    "refund_before_purchase": {
+      "op": "and",
+      "conditions": [
+        {
+          "field": "is_refund",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "field": "user_total_purchase_count",
+          "op": "==",
+          "value": 0
+        }
+      ]
+    },
+    "impossible_user_profile": {
+      "op": "and",
+      "conditions": [
+        {
+          "field": "account_age_days",
+          "op": "<",
+          "value": 7
+        },
+        {
+          "field": "kyc_status",
+          "op": "in",
+          "value": [
+            "failed",
+            "pending",
+            "not_submitted"
+          ]
+        },
+        {
+          "field": "amount",
+          "op": ">",
+          "value": 500
+        }
+      ]
+    },
+    "device_fingerprint_chaos": {
+      "op": "and",
+      "conditions": [
+        {
+          "field": "distinct_devices_24hr",
+          "op": ">=",
+          "value": 5
+        },
+        {
+          "field": "distinct_ips_24hr",
+          "op": ">=",
+          "value": 5
+        }
+      ]
+    },
+    "email_country_mismatch": {
+      "op": "and",
+      "conditions": [
+        {
+          "field": "email_domain_country",
+          "op": "!=",
+          "value": ""
+        },
+        {
+          "field": "billing_country",
+          "op": "!=",
+          "value": ""
+        },
+        {
+          "field": "_custom",
+          "op": "field_ne",
+          "value": [
+            "email_domain_country",
+            "billing_country"
+          ]
+        }
+      ]
+    },
+    "repeat_fraud_offender": {
+      "field": "user_past_fraud_count",
+      "op": ">=",
+      "value": 2
+    },
+    "micro_txn_velocity": {
+      "field": "micro_txn_count_5min",
+      "op": ">=",
+      "value": 3
+    }
+  },
+  "hard_block_threshold": 85,
+  "high_risk_threshold": 60,
+  "threshold_selection": "ALGORITHM-CHOSEN",
+  "calibration_date": "2026-01-03T23:29:57.193733",
+  "version": "3.0",
+  "description": "Rule engine config with declarative conditions (can be loaded by inference scripts)"
+}
