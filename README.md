@@ -38,6 +38,25 @@
 
 ---
 
+## 🚨 The Problem
+
+Digital payment fraud is a **$50+ billion crisis** in 2025, with losses projected to exceed **$343 billion by 2027**. Traditional fraud detection systems face a critical flaw:
+
+| Challenge | Traditional Systems | Our Solution |
+|-----------|---------------------|--------------|
+| **False Positive Rate** | 90-98% of alerts are false | 48% false positive rate |
+| **Explainability** | ML black boxes | 30 interpretable rules |
+| **Adaptability** | Rigid rule thresholds | Dynamic cascaded blending |
+| **Precision** | 2-10% | **52%** |
+
+> *Traditional AML systems waste compliance teams' time—up to 98% of alerts are non-fraudulent.*
+
+**Our cascaded hybrid approach** combines the best of both worlds: explainable rules for instant decisions, ML for pattern recognition, and adaptive blending based on risk level.
+
+> 📖 **[Full Problem Statement & Solution →](docs/problem-statement.md)**
+
+---
+
 ## ⚡ Highlights
 
 | Metric | Value | Description |
@@ -103,10 +122,11 @@ npm run dev    # Runs on http://localhost:5173
 ├── images/            # 📸 Dashboard Screenshots
 │
 └── docs/              # 📖 Detailed Documentation
-    ├── ml-pipeline.md    # ML architecture
-    ├── rules-engine.md   # 30 fraud rules
-    ├── api-reference.md  # API docs
-    └── installation.md   # Setup guide
+    ├── problem-statement.md # Problem & solution context
+    ├── ml-pipeline.md       # ML architecture
+    ├── rules-engine.md      # 30 fraud rules
+    ├── api-reference.md     # API docs
+    └── installation.md      # Setup guide
 ```
 
 ---
@@ -115,6 +135,7 @@ npm run dev    # Runs on http://localhost:5173
 
 | Document | Description |
 |----------|-------------|
+| [**Problem Statement**](docs/problem-statement.md) | Why this matters & our approach |
 | [**ML Pipeline**](docs/ml-pipeline.md) | Complete 8-step training architecture |
 | [**Rules Engine**](docs/rules-engine.md) | 30 expert rules across 9 tiers |
 | [**API Reference**](docs/api-reference.md) | `/predict` endpoint documentation |
