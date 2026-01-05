@@ -18,14 +18,6 @@
 
 ---
 
-<div align="center">
-
-![Fraud Guard Dashboard](images/Image1.jpeg)
-
-</div>
-
----
-
 ## 🎬 Demo Video
 
 <div align="center">
