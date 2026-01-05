@@ -18,6 +18,26 @@
 
 ---
 
+<div align="center">
+
+![Fraud Guard Dashboard](images/Image1.jpeg)
+
+</div>
+
+---
+
+## 🎬 Demo Video
+
+<div align="center">
+
+[![Watch the Demo](https://img.youtube.com/vi/SU_U88xOyYg/maxresdefault.jpg)](https://www.youtube.com/watch?v=SU_U88xOyYg)
+
+**[▶️ Watch Full Demo on YouTube](https://www.youtube.com/watch?v=SU_U88xOyYg)**
+
+</div>
+
+---
+
 ## ⚡ Highlights
 
 | Metric | Value | Description |
@@ -80,6 +100,8 @@ npm run dev    # Runs on http://localhost:5173
 ├── ML_Model_Training_Files/  # Training notebooks
 │   └── TechFiesta_2026_...Training_Pipeline.ipynb
 │
+├── images/            # 📸 Dashboard Screenshots
+│
 └── docs/              # 📖 Detailed Documentation
     ├── ml-pipeline.md    # ML architecture
     ├── rules-engine.md   # 30 fraud rules
@@ -109,6 +131,8 @@ npm run dev    # Runs on http://localhost:5173
 | Alert Management | `/alert-management-center` | Alert queue |
 | Risk Scoring | `/risk-scoring-engine` | Risk tools |
 | Fraud Form | `/fraud-detection-form` | Manual testing |
+
+> 📸 **[View all screenshots →](images/)**
 
 ---
 
