@@ -1,0 +1,22 @@
+# Backend Requirements - TechFiesta Fraud Guard
+# FastAPI Inference Server
+
+# Web Framework
+fastapi>=0.100.0
+uvicorn>=0.23.0
+
+# Data Processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# ML Model Loading
+joblib>=1.3.0
+
+# ML Models (for inference)
+xgboost>=2.0.0
+lightgbm>=4.0.0
+catboost>=1.2.0
+scikit-learn>=1.3.0
+
+# Utilities
+python-multipart>=0.0.6

@@ -82,7 +82,7 @@ Transaction → Rule Engine → BNN Risk Check → ML Ensemble → Decision
 ### Backend
 ```bash
 cd Backend
-pip install fastapi uvicorn pandas numpy joblib xgboost lightgbm catboost
+pip install -r requirements.txt
 python main.py  # Runs on http://localhost:8000
 ```
 
@@ -91,6 +91,13 @@ python main.py  # Runs on http://localhost:8000
 cd Frontend
 npm install
 npm run dev    # Runs on http://localhost:5173
+```
+
+### ML Training (Optional)
+```bash
+cd ML_Model_Training_Files
+pip install -r requirements.txt
+jupyter notebook  # Open the training pipeline
 ```
 
 > 📖 **[Detailed Installation →](docs/installation.md)**
