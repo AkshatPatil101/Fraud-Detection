@@ -4,7 +4,7 @@
 
 ## Pipeline Overview
 
-![Training Pipeline Mindmap](training_pipeline_mindmap.png)
+![Training Pipeline Mindmap](Detailed_Training_Mindmap.png)
 
 ---
 
@@ -107,6 +107,8 @@ Weights optimized via **Bayesian Optimization** (Trial 256, Score=0.7325):
 | bouncer | 72.64 | 60.65✓ | 76.42 | 88.93 |
 
 > **Selected Strategy**: `average` (simple average of model probabilities)
+
+> **Note**: `bayesian_opt` is selected as final strategy since it offered better performance on diverse set of custom test cases
 
 ---
 
